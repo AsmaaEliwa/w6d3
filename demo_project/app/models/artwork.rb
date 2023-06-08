@@ -3,11 +3,12 @@ class Artwork < ApplicationRecord
     validates :image_url , uniqueness:true
     validates :artist_id, uniqueness: { scope: :title }
 
-belongs_to :artist,
-foreign_key: :artist_id,
-primary_key: :id,
-class_name: 'User'
+    belongs_to :artist,
+        foreign_key: :artist_id,
+        primary_key: :id,
+        class_name: 'User'
 
-
-
+    has_many :shared_viewers,
+        through: :artwork_shares,
+        source: :viewer
 end
