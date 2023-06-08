@@ -1197,3 +1197,5 @@ Processing by ArtworksController#index as */*
 Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 937)
 
 
+  [1m[36mArtworkShare Load (1.7ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+  [1m[36mArtworkShare Load (1.6ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
