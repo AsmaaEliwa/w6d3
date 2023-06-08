@@ -8,8 +8,14 @@ class Artwork < ApplicationRecord
         primary_key: :id,
         class_name: 'User'
 
+
     has_many :shared_viewers,
         through: :artwork_shares,
         source: :viewer,
+        dependent: :destroy
+
+        has_many :shared_artworks,
+        through: :artwork_shares,
+        source: :artwork,
         dependent: :destroy
 end

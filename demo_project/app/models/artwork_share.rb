@@ -5,10 +5,15 @@ class ArtworkShare < ApplicationRecord
   belongs_to :viewer,
     foreign_key: :viewer_id,
     primary_key: :id,
-    class_name: 'User'
+    class_name: 'User',
+    dependent: :destroy
+
 
   belongs_to :artwork,
     foreign_key: :artwork_id,
     primary_key: :id,
-    class_name: 'Artwork'
+    class_name: 'Artwork',
+    dependent: :destroy
+
+  
 end

@@ -18,7 +18,23 @@ class ArtworksController < ApplicationController
       render json: artwork.errors.full_messages, status: 422
     end
   end
+    def update
+        artwork=Artwork.find(params[:id])
 
+        if artwork.update(artwork_params)
+            render json: artwork 
+        else
+            render json: artwork.errors.full_messages ,status:422
+        end
+    end
+    def destroy
+        artwork=Artwork.find(params[:id])
+        if artwork.delete
+            render plain:{"message"=>"deleted"}, status:204 
+        else
+            render json: artwork.errors.full_messages ,status:422
+        end
+    end
   private
 
   def artwork_params
