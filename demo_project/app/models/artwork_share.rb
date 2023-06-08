@@ -7,8 +7,8 @@ class ArtworkShare < ApplicationRecord
     primary_key: :id,
     class_name: 'User'
 
-  belongs_to :artwork
+  belongs_to :artwork,
     foreign_key: :artwork_id,
     primary_key: :id,
-    class_name: 'Artwork',
+    class_name: 'Artwork'
 end

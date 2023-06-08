@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+ users=User.create([{username: "asmaa"},{username: "tim"}])
+
+ artworks=Artwork.create([{title: "drawwing",image_url: "http/www.google.com" ,artist_id:1},{title: "random",image_url: "google.com" ,artist_id:2}])
+
+ artwork_shares=ArtworkShare.create([{artwork_id:1 ,viewer_id:2}])
