@@ -8,7 +8,6 @@ class Artwork < ApplicationRecord
         primary_key: :id,
         class_name: 'User'
 
-
     has_many :shared_viewers,
         through: :artwork_shares,
         source: :viewer,
@@ -17,5 +16,11 @@ class Artwork < ApplicationRecord
         has_many :shared_artworks,
         through: :artwork_shares,
         source: :artwork,
+        inverse_of: :artwork,
+        dependent: :destroy
+
+        has_many :comments,
+        foreign_key: :artwork_id,
+        class_name: 'Comment',
         dependent: :destroy
 end

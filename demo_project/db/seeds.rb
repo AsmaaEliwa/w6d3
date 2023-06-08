@@ -10,3 +10,6 @@
  artworks=Artwork.create([{title: "drawwing",image_url: "http/www.google.com" ,artist_id:1},{title: "random",image_url: "google.com" ,artist_id:2}])
 
  artwork_shares=ArtworkShare.create([{artwork_id:1 ,viewer_id:2}])
+
+ comments=Comment.create([{body: "hello" ,
+ author_id: 2 , artwork_id: 1 }])
