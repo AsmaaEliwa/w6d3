@@ -1351,3 +1351,70 @@ FOREIGN KEY ("artwork_id")
   [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mComment Create (7.7ms)[0m  [1m[32mINSERT INTO "comments" ("body", "created_at", "updated_at", "author_id", "artwork_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "hello"], ["created_at", "2023-06-08 20:41:58.641527"], ["updated_at", "2023-06-08 20:41:58.641527"], ["author_id", 2], ["artwork_id", 1]]
   [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users" for ::1 at 2023-06-08 17:04:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 23ms (Views: 7.6ms | ActiveRecord: 6.2ms | Allocations: 7126)
+
+
+Started GET "/users?query=asm" for ::1 at 2023-06-08 17:07:38 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"asm"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE '%'asm'%')[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 2.7ms | Allocations: 1075)
+
+
+  
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "asm"
+LINE 1: ...ELECT "users".* FROM "users" WHERE (username LIKE '%'asm'%')
+                                                                ^
+):
+  
+app/controllers/users_controller.rb:8:in `index'
+Started GET "/users?query=asm" for ::1 at 2023-06-08 17:10:53 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"asm"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE '%asm%')[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 16ms (Views: 4.4ms | ActiveRecord: 7.2ms | Allocations: 4126)
+
+
+Started GET "/users?query=t" for ::1 at 2023-06-08 17:11:05 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"t"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE '%t%')[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 793)
+
+
+Started GET "/users?query=h" for ::1 at 2023-06-08 17:11:17 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"h"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE '%h%')[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 719)
+
+
+Started GET "/users?query=sm" for ::1 at 2023-06-08 17:11:27 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"sm"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE '%sm%')[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms | Allocations: 793)
+
+
+Started GET "/comments?query=sm" for ::1 at 2023-06-08 17:11:41 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/comments"):
+  
+Started GET "/users?query=sm" for ::1 at 2023-06-08 17:11:55 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"sm"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE '%sm%')[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.8ms | Allocations: 949)
+
+
